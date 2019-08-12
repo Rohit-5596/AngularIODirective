@@ -1,0 +1,31 @@
+<p></p>
+<div class="container">
+<form #empForm="ngForm" (ngSubmit)="add()" class="was-validated">
+<div class="form-group">
+    EmployeeId: <input type="number" name="eId" id="eId" pattern=[0-9]{6} [(ngModel)]="emp.eId" #empid="ngModel" class="form-control" required>
+    <span *ngIf="empid.touched && empid.invalid" class="invalid-feedback">Employee id required</span>
+
+</div>
+
+<div class="form-group">
+        Name: <input type="text" name="name" id="name" [(ngModel)]="emp.name" #empname="ngModel" class="form-control" required>
+        <span *ngIf="empname.touched&&empname.invalid" class="invalid-feedback">Employee name required</span>
+    
+    </div>
+
+    <div class="form-group">
+            Salary: <input type="number" name="salary" id="salary" [(ngModel)]="emp.salary" #empsalary="ngModel" class="form-control" required>
+            <span *ngIf="empsalary.touched&&empsalary.invalid" class="invalid-feedback">Employee salary required</span>
+        
+        </div>
+        <div class="form-group">
+    Gender: 
+    <input type="radio" name="gender" id="gender" value="male" [(ngModel)]="emp.gender" #empgender="ngModel" required>Male
+    <input type="radio" name="gender" id="gender" value="female" [(ngModel)]="emp.gender" #empgender="ngModel" required>Female
+    <span *ngIf="empgender.invalid" class="invalid-feedback">Gender is a required field</span>
+        </div>
+    
+    <button class="btn btn-primary" type="submit" [disabled]="empForm.invalid">Save</button>
+      
+</form>
+</div>
